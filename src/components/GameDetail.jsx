@@ -15,7 +15,7 @@ function GameDetail(
   const { gameId } = useParams();
 
   useEffect(() => {
-    fetch(process.env.API_SOURCE + "game/" + gameId, {
+    fetch(import.meta.env.VITE_API_SOURCE + "game/" + gameId, {
       mode: "cors",
       headers: {
         "Content-Type": "application/json",

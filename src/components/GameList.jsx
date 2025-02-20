@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router";
 
@@ -15,7 +14,7 @@ function GameList(
 
   // Functions
   useEffect(() => {
-    fetch(process.env.API_SOURCE + "game", {
+    fetch(import.meta.env.VITE_API_SOURCE + "game/circ", {
       mode: "cors",
       headers: {
         "Content-Type": "application/json",
@@ -38,7 +37,7 @@ function GameList(
 
   async function submitQuery(e) {
     e.preventDefault();
-    await fetch(process.env.API_SOURCE + `game/?title=${query}`, {
+    await fetch(import.meta.env.VITE_API_SOURCE + `game/?title=${query}`, {
       mode: "cors",
       headers: {
         "Content-Type": "application/json",
