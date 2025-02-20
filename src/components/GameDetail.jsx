@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router";
 
@@ -12,10 +11,15 @@ function GameDetail(
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
   // Functions
+  // PLACEHOLDER
+  const API_SOURCE = "https://game-library-api.fly.dev/";
+
   const { gameId } = useParams();
 
   useEffect(() => {
-    fetch(import.meta.env.VITE_API_SOURCE + "game/" + gameId, {
+    // fetch(import.meta.env.VITE_API_SOURCE + "game/" + gameId, {
+      fetch(API_SOURCE + "game/" + gameId, {
+
       mode: "cors",
       headers: {
         "Content-Type": "application/json",
