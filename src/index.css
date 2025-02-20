@@ -1,33 +1,28 @@
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  --dark-blue: #0d203b;
+  --off-white: #fff;
+  --error-text: pink;
+  color: var(--off-white);
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 body {
-  margin: 0;
   display: flex;
   place-items: center;
-  min-width: 320px;
   min-height: 100vh;
+  color: var(--off-white);
+  background-color: grey;
+}
+
+#root {
+  margin: 0 auto;
+  max-width: 800px;
 }
 
 h1 {
@@ -42,7 +37,7 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: var(--off-white);
   cursor: pointer;
   transition: border-color 0.25s;
 }
@@ -63,6 +58,161 @@ button:focus-visible {
     color: #747bff;
   }
   button {
-    background-color: #f9f9f9;
+    background-color: var(--off-white);
+    width: 33%;
+    margin: 10px auto 0 auto;
   }
+}
+
+/* Style changes */
+#root {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+}
+
+a {
+  color: var(--off-white);
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+}
+
+.pageHeader,
+.mainLink {
+  color: var(--dark-blue);
+}
+
+header,
+nav {
+  display: flex;
+  gap: 10px;
+}
+
+header {
+  background-color: var(--dark-blue);
+  justify-content: space-between;
+  padding: 5px;
+}
+
+main {
+  background-color: rgb(186, 186, 186);
+  padding: 5px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+}
+
+.mainDiv,
+ul,
+.gameFormCell {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.mainButton {
+  border-radius: 20px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+.gameForm {
+  display: grid;
+  grid-template-columns: minmax(0, 50%) 50%;
+}
+
+.gameFormRow {
+  grid-column: 1/-1;
+  width: auto;
+}
+
+.blueBlock {
+  padding: 10px;
+  gap: 5px;
+  background-color: var(--dark-blue);
+  border: 2px solid var(--off-white);
+}
+
+.gameLI,
+.gameDetail {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.gameTitle {
+  grid-column: 1 / -1;
+  font-weight: bold;
+  border-bottom: 1px solid var(--off-white);
+}
+
+.gameCardRow {
+  grid-column: 1 / -1;
+  border-top: 1px solid var(--off-white);
+}
+
+.tagLI {
+  display: flex;
+  justify-content: space-between;
+}
+
+.marker {
+  border-radius: 10px;
+  padding: 0 5px;
+  margin-right: auto;
+}
+
+.toggleSet {
+  display: flex;
+  gap: 5px;
+}
+
+.easy {
+  background-color: green;
+  color: white;
+}
+
+.medium {
+  background-color: yellow;
+  color: black;
+}
+
+.complex {
+  background-color: red;
+  color: white;
+}
+
+.available {
+  font-weight: bold;
+}
+
+.unavailable {
+  font-weight: bold;
+  color: yellow;
+}
+
+fieldset {
+  padding: 5px;
+}
+
+.diffField {
+  display: flex;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.errText {
+  color: var(--error-text);
 }
