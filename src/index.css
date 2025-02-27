@@ -122,9 +122,22 @@ ul,
   border-radius: 20px;
 }
 
-form {
+form,
+.formBody {
   display: flex;
   flex-direction: column;
+}
+
+.formHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.moreLabel {
+  display: flex;
+  flex-direction: row;
+  margin: auto 0;
 }
 
 .gameForm {
@@ -177,6 +190,11 @@ form {
   gap: 5px;
 }
 
+.allRadio {
+  background-color: var(--off-white);
+  color: black;
+}
+
 .easy {
   background-color: green;
   color: white;
@@ -207,6 +225,16 @@ fieldset {
 
 .diffField {
   display: flex;
+}
+
+.advSearch {
+  margin-top: 10px;
+  /* padding-top: 5px; */
+  border-top: 2px solid var(--off-white);
+}
+
+.hidden {
+  display: none;
 }
 
 ul {
