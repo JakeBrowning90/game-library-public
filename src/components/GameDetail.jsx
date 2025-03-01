@@ -11,15 +11,20 @@ function GameDetail(
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
   // Functions
-  // PLACEHOLDER
-  const API_SOURCE = "https://game-library-api.fly.dev/";
+  // const API_SOURCE = "http://localhost:3000/";
+  let apiSource;
+  if (import.meta.env.MODE === "development") {
+    //use dev keys
+    apiSource = import.meta.env.VITE_API_SOURCE;
+  } else {
+    //use .env variables
+    apiSource = process.env.VITE_API_SOURCE;
+  }
 
   const { gameId } = useParams();
 
   useEffect(() => {
-    // fetch(import.meta.env.VITE_API_SOURCE + "game/" + gameId, {
-      fetch(API_SOURCE + "game/" + gameId, {
-
+    fetch(apiSource + "game/" + gameId, {
       mode: "cors",
       headers: {
         "Content-Type": "application/json",

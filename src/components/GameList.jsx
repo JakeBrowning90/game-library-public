@@ -17,13 +17,18 @@ function GameList(
   const [loading, setLoading] = useState(true);
 
   // Functions
-  // PLACEHOLDER
-  // const API_SOURCE = "https://game-library-api.fly.dev/";
-  const API_SOURCE = "http://localhost:3000/";
+  // const API_SOURCE = "http://localhost:3000/";
+  let apiSource;
+  if (import.meta.env.MODE === "development") {
+    //use dev keys
+    apiSource = import.meta.env.VITE_API_SOURCE;
+  } else {
+    //use .env variables
+    apiSource = process.env.VITE_API_SOURCE;
+  }
 
   useEffect(() => {
-    // fetch(import.meta.env.VITE_API_SOURCE + "game/circ", {
-    fetch(API_SOURCE + "game/circ", {
+    fetch(apiSource + "game/circ", {
       mode: "cors",
       headers: {
         "Content-Type": "application/json",
@@ -65,9 +70,8 @@ function GameList(
 
   async function submitQuery(e) {
     e.preventDefault();
-    // await fetch(import.meta.env.VITE_API_SOURCE + `game/?title=${query}`, {
     await fetch(
-      API_SOURCE +
+      apiSource +
         `game/circ/?title=${qTitle}&weight=${qGameWeight}&count=${qCount}`,
       {
         mode: "cors",
