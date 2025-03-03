@@ -153,7 +153,7 @@ function GameList(
             />
             <fieldset className="diffField searchDiff">
               <legend>Difficulty:</legend>
-              <div className="marker allRadio toggleSet">
+              <div className="marker allMarker toggleSet">
                 <input
                   type="radio"
                   name="gameWeight"
@@ -199,11 +199,11 @@ function GameList(
                 <label htmlFor="gameWeight3">Comp</label>
               </div>
             </fieldset>
-            <fieldset htmlFor="" className="gameFormRow">
+            <fieldset htmlFor="" className="gameFormRow cardTagList">
               <legend>Tags:</legend>
               {tagList.map((tag) => {
                 return (
-                  <div key={tag.id} className="toggleSet">
+                  <div key={tag.id} className="toggleSet marker allMarker">
                     <input
                       type="checkbox"
                       name={"checkbox" + tag.id}

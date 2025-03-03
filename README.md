@@ -9,9 +9,8 @@ React, React Router (TBA)
 
 ## Challenges/To-dos
 -Paginate search results
--Additional search filters for game search
+-Additional search filters for game search?
 -Form input limits and backend validation
--Change API source to .env value
 
 ## How to use
 -TBA
