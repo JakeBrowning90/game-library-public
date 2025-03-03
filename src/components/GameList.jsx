@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router";
 import arrowDown from "../assets/arrowdown.svg";
 import arrowUp from "../assets/arrowup.svg";
+import { apiSource } from "../apiSource";
+import { parameterizeArray } from "../parameterizeTags";
 
 function GameList(
   {
@@ -12,21 +14,13 @@ function GameList(
   const [qTitle, setQTitle] = useState("");
   const [qGameWeight, setQGameWeight] = useState("");
   const [qCount, setQCount] = useState("");
+  const [tagList, setTagList] = useState([]);
+  const [checkedTags, setCheckedTags] = useState([]);
   const [gameList, setGameList] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
 
   // Functions
-  // const API_SOURCE = "http://localhost:3000/";
-  let apiSource;
-  if (import.meta.env.MODE === "development") {
-    //use dev keys
-    apiSource = import.meta.env.VITE_API_SOURCE;
-  } else {
-    //use .env variables
-    apiSource = process.env.VITE_API_SOURCE;
-  }
-
   useEffect(() => {
     fetch(apiSource + "game/circ", {
       mode: "cors",
@@ -45,6 +39,24 @@ function GameList(
       .finally(() => setLoading(false));
   }, []);
 
+  useEffect(() => {
+    fetch(apiSource + "tag", {
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => {
+        if (response.status >= 400) {
+          throw new Error("Tag list fetch error");
+        }
+        return response.json();
+      })
+      .then((response) => setTagList(response))
+      .catch((error) => setError(error))
+      .finally(() => setLoading(false));
+  }, []);
+
   const handleQTitle = (e) => {
     setQTitle(e.target.value);
   };
@@ -55,6 +67,16 @@ function GameList(
 
   const handleQCount = (e) => {
     setQCount(e.target.value);
+  };
+
+  const handleTags = (e) => {
+    if (e.target.checked) {
+      setCheckedTags(checkedTags.concat(parseInt(e.target.value)));
+    } else {
+      setCheckedTags(
+        checkedTags.filter((tag) => tag !== parseInt(e.target.value))
+      );
+    }
   };
 
   const toggleAdvForm = () => {
@@ -70,9 +92,10 @@ function GameList(
 
   async function submitQuery(e) {
     e.preventDefault();
+    const qTags = parameterizeArray("tags", checkedTags);
     await fetch(
       apiSource +
-        `game/circ/?title=${qTitle}&weight=${qGameWeight}&count=${qCount}`,
+        `game/circ/?title=${qTitle}&weight=${qGameWeight}&count=${qCount}${qTags}`,
       {
         mode: "cors",
         headers: {
@@ -175,6 +198,24 @@ function GameList(
                 />
                 <label htmlFor="gameWeight3">Comp</label>
               </div>
+            </fieldset>
+            <fieldset htmlFor="" className="gameFormRow">
+              <legend>Tags:</legend>
+              {tagList.map((tag) => {
+                return (
+                  <div key={tag.id} className="toggleSet">
+                    <input
+                      type="checkbox"
+                      name={"checkbox" + tag.id}
+                      id={"checkbox" + tag.id}
+                      value={tag.id}
+                      defaultChecked={checkedTags.some((e) => e === tag.id)}
+                      onChange={handleTags}
+                    />
+                    <label htmlFor={"checkbox" + tag.id}>{tag.tagName}</label>
+                  </div>
+                );
+              })}
             </fieldset>
           </div>
           <button>Search</button>

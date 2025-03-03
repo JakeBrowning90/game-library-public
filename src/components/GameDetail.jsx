@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router";
+import { apiSource } from "../apiSource";
 
 function GameDetail(
   {
@@ -11,15 +12,6 @@ function GameDetail(
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
   // Functions
-  // const API_SOURCE = "http://localhost:3000/";
-  let apiSource;
-  if (import.meta.env.MODE === "development") {
-    //use dev keys
-    apiSource = import.meta.env.VITE_API_SOURCE;
-  } else {
-    //use .env variables
-    apiSource = process.env.VITE_API_SOURCE;
-  }
 
   const { gameId } = useParams();
 
