@@ -1,4 +1,3 @@
-import { useState } from "react";
 import GameList from "./components/GameList";
 import GameDetail from "./components/GameDetail";
 import ErrorScreen from "./components/ErrorScreen";
