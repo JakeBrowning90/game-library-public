@@ -22,6 +22,14 @@ React, React Router, CSS, JavaScript
 
 -Tag search results: the intended behavior for searching tags was to return all results containing all queries. For example, searching tags A and B would return all games containing both tags, but none that contain only one or the other. The current build has the opposite result, but this may be better, so I'll run additional tests and get feedback from users.
 
+-Personalize greeting and Game List Header
+-Move difficulty filter out of advanced
+-Change filter form to left sidebar on desktop?
+-Display boxart
+-Detail view: link to buy, rules, forums?
+-Popularity/trending view?
+-Increase title and player count heights
+
 ## How to use
 Use the "Search" form to filter the displayed list of games. The standard form view allows you to search by Title. Click the arrow in the top-right area of the form to display the advanced search filters: Player count (returns all games with that number in the player range or fixed player amount), difficuly rating, or any number of tags. 
 
