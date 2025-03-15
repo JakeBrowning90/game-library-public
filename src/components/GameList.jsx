@@ -139,6 +139,7 @@ function GameList(
             type="text"
             name="queryTag"
             id="queryTag"
+            maxLength="20"
             value={qTitle}
             onChange={handleQTitle}
           />
