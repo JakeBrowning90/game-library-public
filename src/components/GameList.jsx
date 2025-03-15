@@ -118,7 +118,7 @@ function GameList(
 
   return (
     <div className="mainDiv">
-      <h1 className="pageHeader">Game List</h1>
+      <h1 className="pageHeader">The Dice Tower</h1>
       <form onSubmit={submitQuery} className="blueBlock">
         <div className="formHeader">
           <h2>Search</h2>

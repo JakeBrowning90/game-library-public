@@ -167,6 +167,7 @@ form,
   grid-column: 1 / -1;
   font-weight: bold;
   border-bottom: 1px solid var(--off-white);
+  font-size: large;
 }
 
 .gameCardRow {
