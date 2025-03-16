@@ -134,11 +134,11 @@ function GameList(
         </div>
 
         <div className="formBody">
-          <label htmlFor="queryTag">Title:</label>
+          <label htmlFor="queryTitle">Title:</label>
           <input
             type="text"
-            name="queryTag"
-            id="queryTag"
+            name="queryTitle"
+            id="queryTitle"
             maxLength="20"
             value={qTitle}
             onChange={handleQTitle}
